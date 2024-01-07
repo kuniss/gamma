@@ -6,6 +6,10 @@ on:
       lcd_compiler_version:
         type: string
         required: true
+      build_type:
+        type: string
+        required: false
+        default: "debug"
 
 jobs:
   build:
@@ -39,7 +43,7 @@ jobs:
     
     - name: Run build
       run: |
-        dub build
+        dub build --build={{inputs.build_type}}
 
     - name: Upload executables
       uses: actions/upload-artifact@v4
