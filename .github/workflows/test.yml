@@ -3,10 +3,14 @@ name: Test Gamma
 on:
   workflow_call:
     inputs:
-      dmd_compiler_version:
+      compiler_version:
         type: string
         required: true
-
+      build_type:
+        type: string
+        required: false
+        default: "debug"
+  
 jobs:
   test:
     name: Test Gamma
@@ -34,4 +38,4 @@ jobs:
     
     - name: Run tests
       run: |
-        dub test --config=example
+        dub test --build=${{inputs.build_type}} --config=example
