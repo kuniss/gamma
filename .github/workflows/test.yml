@@ -35,12 +35,12 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v3
     
-    - name: Install D compiler
+    - name: Install D compiler for building gamma
       uses: dlang-community/setup-dlang@v1
       with:
         compiler: ${{ inputs.compiler_version }}
     
-    - name: Install different DMD compiler for unittests if not installed yet
+    - name: Install DMD compiler if not installed yet, called by gamma during unittests
       uses: dlang-community/setup-dlang@v1
       if: ${{ ! startsWith(inputs.compiler_version, 'dmd') }}
       with:
