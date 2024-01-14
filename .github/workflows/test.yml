@@ -6,7 +6,7 @@ on:
       compiler_version:
         type: string
         required: true
-      unittest_compiler_version:
+      gamma_used_compiler_version:
           type: string
           required: false
           default: "dmd-2.103.1"
@@ -44,9 +44,10 @@ jobs:
       uses: dlang-community/setup-dlang@v1
       if: ${{ ! startsWith(inputs.compiler_version, 'dmd') }}
       with:
-        compiler: ${{ inputs.unittest_compiler_version }}
+        compiler: ${{ inputs.gamma_used_compiler_version }}
     
     - name: Run tests
       run: |
-        dub build --build=${{inputs.build_type}}
-        dub test --build=unittest --config=example
+        dub build --compiler=${{inputs.compiler_version}} --build=${{inputs.build_type}}
+        dub test --compiler=${{inputs.compiler_version}} --build=unittest --config=example
+
