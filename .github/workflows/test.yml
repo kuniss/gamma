@@ -39,4 +39,4 @@ jobs:
     - name: Run tests
       run: |
         dub build --build=${{inputs.build_type}}
-        dub test --build=unittests --config=example
+        dub test --build=unittest --config=example
