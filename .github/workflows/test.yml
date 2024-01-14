@@ -6,6 +6,10 @@ on:
       compiler_version:
         type: string
         required: true
+      unittest_compiler_version:
+          type: string
+          required: false
+          default: "dmd-2.103.1"
       build_type:
         type: string
         required: false
@@ -35,6 +39,12 @@ jobs:
       uses: dlang-community/setup-dlang@v1
       with:
         compiler: ${{ inputs.compiler_version }}
+    
+    - name: Install different DMD compiler for unittests if not installed yet
+      uses: dlang-community/setup-dlang@v1
+      if: ${{ ! startsWith(inputs.compiler_version, 'dmd') }}
+      with:
+        compiler: ${{ inputs.unittest_compiler_version }}
     
     - name: Run tests
       run: |
