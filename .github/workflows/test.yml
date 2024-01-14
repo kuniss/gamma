@@ -38,4 +38,5 @@ jobs:
     
     - name: Run tests
       run: |
-        dub test --build=${{inputs.build_type}} --config=example
+        dub build --build=${{inputs.build_type}}
+        dub test --build=unittests --config=example
