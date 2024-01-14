@@ -48,6 +48,6 @@ jobs:
     
     - name: Run tests
       run: |
-        dub build --compiler=${{inputs.compiler_version}} --build=${{inputs.build_type}}
-        dub test --compiler=${{inputs.compiler_version}} --build=unittest --config=example
+        dub build --compiler="${{inputs.compiler_version}}" --build=${{inputs.build_type}}
+        dub test --compiler="${{inputs.compiler_version}}" --build=unittest --config=example
 
