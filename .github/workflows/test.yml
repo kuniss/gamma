@@ -47,6 +47,6 @@ jobs:
     
     - name: Run tests
       run: |
-        dub build --compiler=ldc --build=${{inputs.build_type}}
-        dub test --compiler=ldc --build=unittest --config=example
+        dub build --compiler=ldc2 --build=${{inputs.build_type}}
+        dub test --compiler=ldc2 --build=unittest --config=example
 
