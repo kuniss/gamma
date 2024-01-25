@@ -9,7 +9,7 @@ jobs:
   verify:
     uses: ./.github/workflows/test.yml
     with:
-      lcd_compiler_version: ldc-1.33.0
+      ldc_compiler_version: ldc-1.33.0
       gamma_used_dmd_compiler_version: dmd-2.103.1
       build_type: release-gamma
 
