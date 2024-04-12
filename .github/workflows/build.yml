@@ -43,6 +43,8 @@ jobs:
           compiler: ${{ inputs.ldc_compiler_version }}
       
       - name: Build & run tests
+        env:
+          DC: ldc2
         run: |
           dub build --compiler=$DC --build=${{inputs.build_type}}
           dub test --compiler=$DC --build=unittest --config=example
