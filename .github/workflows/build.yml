@@ -44,10 +44,8 @@ jobs:
       
       - name: Build & run tests
         run: |
-          dub build --compiler=$DC --build=${{inputs.build_type}}
-          dub test --compiler=$DC --build=unittest --config=example
-        env:
-          DC: ldc2
+          dub build --build=${{inputs.build_type}}
+          dub test --build=unittest --config=example
     
       - name: Upload executables to workflow run page
         uses: actions/upload-artifact@v4
